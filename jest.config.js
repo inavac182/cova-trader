@@ -3,7 +3,7 @@ module.exports = {
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
     modulePathIgnorePatterns: ['node_modules'],
     moduleDirectories: ["node_modules", "src"],
-    collectCoverage: false,
+    collectCoverage: true,
     collectCoverageFrom: [
         "src/**/*.{ts,tsx}",
         "!src/**/index.ts"
@@ -16,12 +16,12 @@ module.exports = {
             statements: 90
         }
     },
+    coverageReporters: ['cobertura', 'html', 'text', 'text-summary'],
     coveragePathIgnorePatterns: [
         "<rootDir>/node_modules/",
         "<rootDir>/__tests__/",
-        "<rootDir>/src/__generated__",
-        "<rootDir>/src/config/",
-        "<rootDir>/src/stylesheets/"
+        "<rootDir>/src/less/",
+        "<rootDir>/src/app.tsx"
     ],
     moduleNameMapper: {
         "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",

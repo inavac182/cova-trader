@@ -5,7 +5,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     devtool: "source-map",
-    entry: "./src/index.tsx",
+    entry: "./src/app.tsx",
     mode: "production",
     module: {
         rules: [
