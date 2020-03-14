@@ -25,7 +25,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
     }
   },
   "dependencies": {
@@ -69,6 +70,7 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "less-watch-compiler": "^1.14.6",
+    "lint-staged": "^10.0.8",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "prettier": "1.19.1",
@@ -83,5 +85,9 @@
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }
