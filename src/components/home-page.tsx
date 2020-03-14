@@ -1,6 +1,11 @@
-import * as React from "react";
+import * as React from 'react'
 
-export const HomePage = () => 
-    <div className='page'>
-        <h1>Hello!</h1>
-    </div>;
+export interface HomePageProps {
+  message: string
+}
+
+export const HomePage = (props: HomePageProps) => (
+  <div className="page">
+    <h1>{props.message}</h1>
+  </div>
+)
