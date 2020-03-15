@@ -2,10 +2,20 @@
 
 exports[`HomePage renders correctly 1`] = `
 <div
-  className="page"
+  class="page"
 >
-  <h1>
-    Hello!
-  </h1>
+  <h1 />
+  <form>
+    <input
+      required=""
+      type="text"
+      value=""
+    />
+    <button
+      type="submit"
+    >
+       Save! 
+    </button>
+  </form>
 </div>
 `;

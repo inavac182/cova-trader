@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
-import { HomePageStore } from 'src/models';
+import { HomePageStore } from 'src/stores';
 
 export interface HomePageProps {
   homePageStore?: HomePageStore;
