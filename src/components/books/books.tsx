@@ -19,11 +19,8 @@ export const Books = inject('booksStore')(
 
     return (
       <div className="books">
-        {booksStore.loading ? (
-          <p>Loading books....</p>
-        ) : (
-          books.map((book: Book, key: number) => <BooksData key={key} tradingBook={book} />)
-        )}
+        {booksStore.loading && <p>Loading books....</p>}
+        {books && books.map((book: Book, key: number) => <BooksData key={key} tradingBook={book} />)}
       </div>
     );
   })

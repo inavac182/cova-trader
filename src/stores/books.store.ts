@@ -28,7 +28,7 @@ export class BooksStore extends Store {
 }
 
 BooksStore.DEFAULTS = {
-  books: {},
+  books: [],
   loading: true,
   error: false,
 };

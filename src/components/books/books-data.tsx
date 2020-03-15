@@ -2,18 +2,26 @@ import React from 'react';
 import { Book } from 'src/types/books-types';
 import { TickerStore } from 'src/stores/ticker.store';
 import { inject } from 'mobx-react';
+import { OrdersStore } from 'src/stores/orders.store';
 
 export interface BooksProps {
   tradingBook: Book;
   tickerStore?: TickerStore;
+  ordersStore?: OrdersStore;
 }
 
-export const BooksData = inject('tickerStore')((props: BooksProps) => {
-  const { tradingBook, tickerStore } = props;
+export const BooksData = inject(
+  'tickerStore',
+  'ordersStore'
+)((props: BooksProps) => {
+  const { tradingBook, tickerStore, ordersStore } = props;
   const bookName = tradingBook.book;
 
   const handleOnClick = () => {
-    tickerStore.fetchTicker(bookName);
+    /* Ticker Endpoint failing with CORS - Support ticker raised*/
+    //tickerStore.fetchTicker(bookName);
+
+    ordersStore.fetchOrders(bookName);
   };
 
   return (

@@ -9,6 +9,7 @@ import { Provider } from 'mobx-react';
 import { HomePageStore, BooksStore, TickerStore } from './stores';
 import { HomePage } from './components';
 import './less/main.less';
+import { OrdersStore } from './stores/orders.store';
 
 const browserHistory = createBrowserHistory();
 const routingStore = new RouterStore();
@@ -18,6 +19,7 @@ const stores = {
   homePageStore: new HomePageStore(),
   booksStore: new BooksStore(),
   tickerStore: new TickerStore(),
+  ordersStore: new OrdersStore(),
 };
 
 const history = syncHistoryWithStore(browserHistory, routingStore);
