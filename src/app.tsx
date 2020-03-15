@@ -1,6 +1,33 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import './less/main.less'
-import { HomePage } from './components'
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Router } from 'react-router';
+import { createBrowserHistory } from 'history';
 
-ReactDOM.render(<HomePage message={'Hello'} />, document.getElementById('main'))
+import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
+import { Provider } from 'mobx-react';
+
+import { HomePageStore } from './models';
+import { HomePage } from './components';
+import './less/main.less';
+
+const browserHistory = createBrowserHistory();
+const routingStore = new RouterStore();
+
+const stores = {
+  routing: routingStore,
+  homePageStore: new HomePageStore(),
+};
+
+const history = syncHistoryWithStore(browserHistory, routingStore);
+
+export default function MainRouter() {
+  return (
+    <Provider {...stores}>
+      <Router history={history}>
+        <HomePage />
+      </Router>
+    </Provider>
+  );
+}
+
+ReactDOM.render(<MainRouter />, document.getElementById('main'));

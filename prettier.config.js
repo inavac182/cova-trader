@@ -1,7 +1,7 @@
 module.exports = {
   printWidth: 120,
   proseWrap: "preserve",
-  semi: false,
+  semi: true,
   singleQuote: true,
   useTabs: false,
   tabWidth: 2,

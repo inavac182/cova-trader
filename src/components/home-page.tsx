@@ -1,11 +1,37 @@
-import * as React from 'react'
+import * as React from 'react';
+import { observer, inject } from 'mobx-react';
+import { HomePageStore } from 'src/models';
 
 export interface HomePageProps {
-  message: string
+  homePageStore?: HomePageStore;
 }
 
-export const HomePage = (props: HomePageProps) => (
-  <div className="page">
-    <h1>{props.message}</h1>
-  </div>
-)
+export const HomePage = inject('homePageStore')(
+  observer((props: HomePageProps) => {
+    const { homePageStore } = props;
+    const { title } = homePageStore;
+    const [titleState, setTitle] = React.useState(title);
+
+    const handleOnChange = e => {
+      setTitle(e.target.value);
+    };
+
+    const handleSubmit = e => {
+      homePageStore.hydrate({
+        title: titleState,
+      });
+
+      e.preventDefault();
+    };
+
+    return (
+      <div className="page">
+        <h1>{title}</h1>
+        <form onSubmit={handleSubmit}>
+          <input type="text" value={titleState} onChange={handleOnChange} required />
+          <button type="submit"> Save! </button>
+        </form>
+      </div>
+    );
+  })
+);

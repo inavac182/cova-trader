@@ -1,6 +1,9 @@
 {
   "include": ["./src/**/*"],
   "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
     "sourceMap": true,
     "noImplicitAny": false,
     "module": "commonjs",
@@ -11,9 +14,7 @@
       "dom"
     ],
     "removeComments": true,
-    "allowSyntheticDefaultImports": false,
     "jsx": "react",
-    "allowJs": true,
     "baseUrl": "./",
     "paths": {
       "components/*": [
@@ -21,7 +22,7 @@
       ]
     },
     "types": ["node", "jest"],
-    "allowJS": true,
+    "allowJs": true,
     "noEmit": true
   }
 }

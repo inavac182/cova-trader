@@ -24,6 +24,9 @@
     "url": "https://github.com/inavac182/cova-trader/issues"
   },
   "dependencies": {
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.1.8",
+    "mobx-react-router": "^4.1.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2"
@@ -38,6 +41,8 @@
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
     "@types/react-test-renderer": "^16.9.2",
+    "@types/history": "^4.7.5",
+    "@types/react-router": "^5.1.4",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
     "awesome-typescript-loader": "^5.2.1",
