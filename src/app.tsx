@@ -6,7 +6,7 @@ import { createBrowserHistory } from 'history';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { Provider } from 'mobx-react';
 
-import { HomePageStore } from './stores';
+import { HomePageStore, BooksStore } from './stores';
 import { HomePage } from './components';
 import './less/main.less';
 
@@ -16,6 +16,7 @@ const routingStore = new RouterStore();
 const stores = {
   routing: routingStore,
   homePageStore: new HomePageStore(),
+  booksStore: new BooksStore(),
 };
 
 const history = syncHistoryWithStore(browserHistory, routingStore);

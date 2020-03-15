@@ -4,6 +4,9 @@ exports[`HomePage renders correctly 1`] = `
 <div
   class="page"
 >
+  <p>
+    vvvvvvv ======== TEST HELLO WORLD frame ========= vvvvv
+  </p>
   <h1 />
   <form>
     <input
@@ -17,5 +20,15 @@ exports[`HomePage renders correctly 1`] = `
        Save! 
     </button>
   </form>
+  <p>
+    vvvvvvv ======== App frame ========= vvvvv
+  </p>
+  <div
+    class="books"
+  >
+    <p>
+      Loading books....
+    </p>
+  </div>
 </div>
 `;
