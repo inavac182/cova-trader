@@ -17,15 +17,6 @@ describe ('HomePage', () => {
       expect(homepage).toMatchSnapshot();
     });
 
-    it('should hydrate store with new title when submit form', () => {
-      const homePageWrapper = TestProvider(stores).mount(<HomePage />);
-
-      stores.homePageStore.hydrate = jest.fn();
-      homePageWrapper.find('form').simulate('submit');
-
-      expect(stores.homePageStore.hydrate).toHaveBeenCalled();
-    });
-
     it('should render home page with correct title', () => {
       const expectedTitle = 'My Title';
       const stores = {

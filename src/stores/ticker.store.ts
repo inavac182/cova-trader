@@ -1,24 +1,28 @@
 import { observable, action, computed } from 'mobx';
 import { StoreDefaults } from '../utils/storeDefaults';
 import { Store } from '../utils/store';
-import { BooksResponse, Book } from 'src/types';
+import { TickerResponse, Ticker, Book } from 'src/types';
 
-export class BooksStore extends Store {
-  @observable public books: [Book];
+export class TickerStore extends Store {
+  @observable public tickers: [Ticker];
+  @observable public book: Book;
   @observable public loading: boolean;
   @observable public error: boolean;
 
   @action
-  public fetchBooks() {
-    fetch('https://api.bitso.com/v3/available_books/')
+  public fetchTicker(book: string) {
+    fetch(`https://api.bitso.com/v3/ticker/?book=${book}`)
       .then(res => res.json())
-      .then((books: BooksResponse) => {
+      .then((books: TickerResponse) => {
         if (books.success) {
           this.hydrate({
             books: books.payload,
             loading: false,
           });
         }
+      })
+      .catch(res => {
+        console.log('Err: ', res);
       });
   }
 
@@ -27,7 +31,7 @@ export class BooksStore extends Store {
   }
 }
 
-BooksStore.DEFAULTS = {
+TickerStore.DEFAULTS = {
   books: {},
   loading: true,
   error: false,

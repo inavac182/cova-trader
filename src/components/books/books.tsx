@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { observer, inject } from 'mobx-react';
 import { BooksStore } from 'src/stores';
-import { Book } from 'src/types/books-response';
+import { Book } from 'src/types';
 import { BooksData } from './books-data';
 
 export interface BooksProps {
@@ -22,7 +22,7 @@ export const Books = inject('booksStore')(
         {booksStore.loading ? (
           <p>Loading books....</p>
         ) : (
-          books.map((book: Book, key: number) => <BooksData key={key} book={book} />)
+          books.map((book: Book, key: number) => <BooksData key={key} tradingBook={book} />)
         )}
       </div>
     );

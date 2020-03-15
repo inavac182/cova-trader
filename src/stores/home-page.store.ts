@@ -15,5 +15,5 @@ export class HomePageStore extends Store {
 }
 
 HomePageStore.DEFAULTS = {
-  title: '',
+  title: 'Cova trader',
 };
