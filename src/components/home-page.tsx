@@ -4,22 +4,32 @@ import { RouterStore } from 'mobx-react-router';
 
 import { HomePageStore, BooksStore } from 'src/stores';
 import { Books } from './books';
-import { Orders } from './orders';
+import { Orders, Title } from './orders';
 import { MatchProps } from 'src/types';
 
-export interface HomePageProps {
+interface HomePageProps {
   homePageStore?: HomePageStore;
   routing?: RouterStore;
   booksStore?: BooksStore;
   match: MatchProps;
 }
 
-const LoadedPage = () => {
+interface LoadedPageProps {
+  title: string;
+}
+
+const LoadedPage = (props: LoadedPageProps) => {
   return (
-    <>
-      <Books />
-      <Orders />
-    </>
+    <section className="dashboard">
+      <section className="orders">
+        <Title title={props.title} />
+        <Orders />
+      </section>
+      <section className="graph">
+        <Books />
+      </section>
+      <div className="clearer"></div>
+    </section>
   );
 };
 
@@ -57,11 +67,6 @@ export const HomePage = inject(
       });
     }, [bookSelected]);
 
-    return (
-      <div className="page">
-        <h1>{title}</h1>
-        {homePageStore.loading ? <LoadingPage /> : <LoadedPage />}
-      </div>
-    );
+    return <>{homePageStore.loading ? <LoadingPage /> : <LoadedPage title={title} />}</>;
   })
 );
