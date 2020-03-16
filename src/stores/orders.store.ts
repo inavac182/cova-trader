@@ -11,6 +11,18 @@ export class OrdersStore extends Store {
   @observable public loading: boolean;
   @observable public error: boolean;
 
+  @computed get displayName() {
+    if (!this.book) {
+      return '';
+    }
+
+    const bookName = this.book.split('_');
+    const major = bookName[0].toUpperCase();
+    const minor = bookName[1].toUpperCase();
+
+    return `${major}/${minor}`;
+  }
+
   @action
   public fetchOrders(book: string) {
     this.hydrate({
