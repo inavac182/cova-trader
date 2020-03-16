@@ -13,10 +13,6 @@ export const Books = inject('booksStore')(
     const { booksStore } = props;
     const { books } = booksStore;
 
-    useEffect(() => {
-      booksStore.fetchBooks();
-    }, []);
-
     return (
       <div className="books">
         {booksStore.loading && <p>Loading books....</p>}

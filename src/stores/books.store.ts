@@ -9,7 +9,7 @@ export class BooksStore extends Store {
   @observable public error: boolean;
 
   @action
-  public fetchBooks() {
+  public fetchBooks(selectedBook: string, callback?: (book: string) => void) {
     fetch('https://api.bitso.com/v3/available_books/')
       .then(res => res.json())
       .then((books: BooksResponse) => {
@@ -18,6 +18,15 @@ export class BooksStore extends Store {
             books: books.payload,
             loading: false,
           });
+
+          if (callback) {
+            const filterBook = this.books.filter((book: Book) => {
+              return book.book === selectedBook;
+            });
+
+            selectedBook = filterBook.length > 0 ? filterBook[0].book : this.books[0].book;
+            callback(selectedBook);
+          }
         }
       });
   }

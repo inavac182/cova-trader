@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { Provider } from 'mobx-react';
@@ -10,6 +10,7 @@ import { HomePageStore, BooksStore, TickerStore } from './stores';
 import { HomePage } from './components';
 import './less/main.less';
 import { OrdersStore } from './stores/orders.store';
+import { Router } from 'react-router';
 
 const browserHistory = createBrowserHistory();
 const routingStore = new RouterStore();
@@ -26,11 +27,18 @@ const history = syncHistoryWithStore(browserHistory, routingStore);
 
 export default function MainRouter() {
   return (
-    <Provider {...stores}>
-      <Router history={history}>
-        <HomePage />
-      </Router>
-    </Provider>
+    <div>
+      <BrowserRouter>
+        <Provider {...stores}>
+          <Router history={history}>
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/:book" render={props => <HomePage {...props} />} />
+            </Switch>
+          </Router>
+        </Provider>
+      </BrowserRouter>
+    </div>
   );
 }
 

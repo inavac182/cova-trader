@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import { OrdersStore } from 'src/stores/orders.store';
+import { HomePageStore } from 'src/stores';
 
 export interface OrdersProps {
   ordersStore?: OrdersStore;
+  homePageStore?: HomePageStore;
 }
 
-export const Orders = inject('ordersStore')(
+export const Orders = inject(
+  'ordersStore',
+  'homePageStore'
+)(
   observer((props: OrdersProps) => {
-    const {
-      ordersStore: { loading, book, orders, error },
-    } = props;
+    const { ordersStore, homePageStore } = props;
+    const { bookSelected } = homePageStore;
+    const { loading, orders, error, book } = ordersStore;
+
+    useEffect(() => {
+      ordersStore.fetchOrders(bookSelected);
+    }, [bookSelected]);
 
     return (
       <div className="orders">
