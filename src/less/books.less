@@ -1,0 +1,27 @@
+.books {
+  width: 100%;
+  height: 40px;
+}
+
+.book {
+  width: 100px;
+  height: 100%;
+  float: left;
+  cursor: pointer;
+  border-bottom: 3px solid @darkBlueGray;
+  border-left: 1px solid @darkBlueGray;
+
+  &:hover {
+    border-bottom: 3px solid @aqua;
+    color: @aqua;
+  }
+
+  .name {
+    width: 100%;
+    text-align: center;
+  }
+
+  .last-price {
+    text-align: center;
+  }
+}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { RouterStore } from 'mobx-react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleUp, faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
 
 import { Book } from 'src/types/books-types';
 import { TickerStore } from 'src/stores/ticker.store';
@@ -28,9 +30,10 @@ export const BooksData = inject(
   };
 
   return (
-    <div className="books">
-      <p>
-        Book: <button onClick={handleOnClick}>{tradingBook.book}</button>
+    <div className="book" onClick={handleOnClick}>
+      <p className="name">{tradingBook.book}</p>
+      <p className="last-price">
+        <small>$5,000.00</small> <FontAwesomeIcon icon={faAngleUp} />
       </p>
     </div>
   );

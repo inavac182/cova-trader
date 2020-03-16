@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { observer, inject } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
-import { RouteComponentProps } from 'react-router';
 
 import { HomePageStore, BooksStore } from 'src/stores';
 import { Books } from './books';
 import { Orders } from './orders';
+import { MatchProps } from 'src/types';
 
 export interface HomePageProps {
   homePageStore?: HomePageStore;
@@ -14,24 +14,12 @@ export interface HomePageProps {
   match: MatchProps;
 }
 
-interface MatchParams {
-  name: string;
-}
-
-interface ParamsObj {
-  book?: string;
-}
-
-interface MatchProps extends RouteComponentProps<MatchParams> {
-  params: ParamsObj;
-}
-
 const LoadedPage = () => {
   return (
-    <div>
+    <>
       <Books />
       <Orders />
-    </div>
+    </>
   );
 };
 

@@ -27,18 +27,16 @@ const history = syncHistoryWithStore(browserHistory, routingStore);
 
 export default function MainRouter() {
   return (
-    <div>
-      <BrowserRouter>
-        <Provider {...stores}>
-          <Router history={history}>
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/:book" render={props => <HomePage {...props} />} />
-            </Switch>
-          </Router>
-        </Provider>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Provider {...stores}>
+        <Router history={history}>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/:book" render={props => <HomePage {...props} />} />
+          </Switch>
+        </Router>
+      </Provider>
+    </BrowserRouter>
   );
 }
 

@@ -14,8 +14,12 @@ export class BooksStore extends Store {
       .then(res => res.json())
       .then((books: BooksResponse) => {
         if (books.success) {
+          const filteredBooks = books.payload.filter((bookObj: Book) => {
+            return bookObj.book.includes('mxn');
+          });
+
           this.hydrate({
-            books: books.payload,
+            books: filteredBooks,
             loading: false,
           });
 

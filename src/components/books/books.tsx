@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { BooksStore } from 'src/stores';
 import { Book } from 'src/types';
@@ -14,10 +14,11 @@ export const Books = inject('booksStore')(
     const { books } = booksStore;
 
     return (
-      <div className="books">
+      <section className="books">
         {booksStore.loading && <p>Loading books....</p>}
         {books && books.map((book: Book, key: number) => <BooksData key={key} tradingBook={book} />)}
-      </div>
+        <div className="clearer"></div>
+      </section>
     );
   })
 );
